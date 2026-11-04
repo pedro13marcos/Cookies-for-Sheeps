@@ -5,7 +5,7 @@ var prevScenePath: String = "";
 var nextScenePath: String = "";
 
 #Caminho do config
-const CONF_PATH = "res://confGame.json";
+const CONF_PATH = "user://confGame.json";
 
 #Variaveis de config
 var language = TranslationServer.get_locale();
@@ -13,12 +13,11 @@ var layout = "Auto";
 var controlType = "KBM";
 
 
-#Caminho do save - Agora salvando no res ao inves do user pra teste
-#const SAVE_PATH = "user://saveGame.json";
-const SAVE_PATH = "res://saveGame.json";
+#Caminho do save
+const SAVE_PATH = "user://saveGame.json";
 
 # Versao do jogo
-const GAME_VERSION: String = "0.4";
+const GAME_VERSION: String = "0.5";
 
 #Vidas agora vão ser salvas aqui pra facilitar criar saves
 var vidas = 3;
