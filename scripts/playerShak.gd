@@ -7,6 +7,7 @@ var facingDir = Vector2();
 var dir = Vector2();
 var lastDir = Vector2(1,0);
 var hurtCoolDown  = false;
+var isDead = false;
 var paos = 0;
 var vida: int:
 	get:
@@ -18,6 +19,7 @@ var vida: int:
 
 @onready var parent = get_node("..");
 @onready var novoPao = preload("res://nodes/paoAtack.tscn");
+@onready var deadSprite = preload("res://sprites/shakira/player_dead.png");
 #@onready var anim = $AnimatedSprite2D
 @onready var anim = $AnimationPlayer
 @onready var hud = $"../HUD"
@@ -29,6 +31,10 @@ func _ready() -> void:
 
 #função atualizada com os fps relacionadas a física
 func _physics_process(_delta):
+	if isDead:
+		velocity = Vector2.ZERO;
+		move_and_slide();
+		return;
 	
 	#Reseta o dir pra não andar pra sempre
 	dir = Vector2();
@@ -97,6 +103,8 @@ func addPao():
 
 #funcao que tira vida quando bate com o inimigo ou droga, muda a cor pra vermelho e começa o cooldown
 func takeHit():
+	if isDead:
+		return;
 	if(!hurtCoolDown):
 		vida-=1;
 		modulate = Color.RED;
@@ -104,21 +112,36 @@ func takeHit():
 		hurtCoolDown = true;
 		hud.attHud();
 		if (vida <= 0): 
-			$morteTimer.start();
-			$morte.play(0.49);
+			die();
 		else:
 			$hit.play(0.9);
 		
 		#OS.alert("player = "+str(vida)+"/n global = "+str(Global.vidas));
-		
-	#Verifica se o player morreu e chama a funcao de morte.
+
+#Funcao de morte: trava movimento, troca a sprite para morta e deita na horizontal
+func die() -> void:
+	isDead = true;
+	$morteTimer.start();
+	$morte.play(0.49);
+	anim.stop();
+	modulate = Color.WHITE;
+	$coolDownTimer.stop();
+	hurtCoolDown = true;
+	$CollisionShape2D.set_deferred("disabled", true);
+	$Sprite2D.texture = deadSprite;
 	
-	
+	# Deita o personagem na horizontal como se estivesse morto
+	var target_rot = deg_to_rad(90.0) if $Sprite2D.scale.x > 0 else deg_to_rad(-90.0);
+	var tween = create_tween();
+	tween.set_parallel(true);
+	tween.tween_property($Sprite2D, "rotation", target_rot, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT);
+	tween.tween_property($Sprite2D, "position:y", 18.0, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT);
 
 #Timer depois do hit
 func _on_cool_down_timer_timeout() -> void:
-	modulate = Color.WHITE;
-	hurtCoolDown = false
+	if not isDead:
+		modulate = Color.WHITE;
+		hurtCoolDown = false;
 
 #get de teste de pao
 func getPao():

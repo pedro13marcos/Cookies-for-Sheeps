@@ -18,7 +18,7 @@ var controlType = "KBM";
 const SAVE_PATH = "res://saveGame.json";
 
 # Versao do jogo
-const GAME_VERSION: String = "0.1";
+const GAME_VERSION: String = "0.2";
 
 #Vidas agora vão ser salvas aqui pra facilitar criar saves
 var vidas = 3;
