@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://yqdhukkdvfrf"]
+
+[ext_resource type="Script" uid="uid://fsl5nms4i02q" path="res://scripts/menu.gd" id="1_gfiw5"]
+[ext_resource type="Texture2D" uid="uid://bqq5aw61f7813" path="res://sprites/charcters/096cd9bd-54e3-458e-b2f2-1bf237a0b829.png" id="2_v4lp8"]
+[ext_resource type="Theme" uid="uid://qhk4mgenlv66" path="res://fonts/theme.tres" id="3_n0hwq"]
+
+[node name="Menu" type="Control" unique_id=1141555996]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gfiw5")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1999877817]
+modulate = Color(0.62152386, 0.62152386, 0.6215238, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v4lp8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Titulo" type="Label" parent="." unique_id=258172776]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 23.0
+offset_right = 1180.0
+offset_bottom = 137.0
+theme = ExtResource("3_n0hwq")
+theme_override_font_sizes/font_size = 101
+text = "title"
+horizontal_alignment = 1
+
+[node name="Subtitulo" type="Label" parent="." unique_id=1998593412]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 139.0
+offset_right = 1456.0
+offset_bottom = 274.0
+theme = ExtResource("3_n0hwq")
+theme_override_font_sizes/font_size = 46
+text = "text_subtitle"
+horizontal_alignment = 1
+
+[node name="MenuContainer" type="VBoxContainer" parent="." unique_id=889889958]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 219.0
+offset_right = 1023.0
+offset_bottom = 678.0
+alignment = 1
+
+[node name="Continuar" type="Button" parent="MenuContainer" unique_id=1522342344]
+layout_mode = 2
+theme = ExtResource("3_n0hwq")
+text = "text_continue"
+
+[node name="Jogar" type="Button" parent="MenuContainer" unique_id=1789412065]
+layout_mode = 2
+theme = ExtResource("3_n0hwq")
+text = "text_play"
+
+[node name="Options" type="Button" parent="MenuContainer" unique_id=979951574]
+layout_mode = 2
+theme = ExtResource("3_n0hwq")
+text = "text_options"
+
+[node name="Sair" type="Button" parent="MenuContainer" unique_id=1514016708]
+layout_mode = 2
+theme = ExtResource("3_n0hwq")
+text = "text_quit"
+
+[node name="Options Menu" type="Control" parent="." unique_id=679864234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 5.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="optionsContainer" type="VBoxContainer" parent="Options Menu" unique_id=1177439395]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -485.5
+offset_top = -167.5
+offset_right = 485.5
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Ligua" type="Label" parent="Options Menu/optionsContainer" unique_id=309663968]
+layout_mode = 2
+theme = ExtResource("3_n0hwq")
+text = "text_language"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="OptionButton" parent="Options Menu/optionsContainer" unique_id=393153473]
+layout_mode = 2
+alignment = 1
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Português"
+popup/item_0/id = 1
+popup/item_1/text = "Español"
+popup/item_1/id = 2
+popup/item_2/text = "English"
+popup/item_2/id = 3
+
+[node name="Layout" type="Label" parent="Options Menu/optionsContainer" unique_id=757408834]
+layout_mode = 2
+text = "text_layout"
+horizontal_alignment = 1
+
+[node name="MenuLayout" type="OptionButton" parent="Options Menu/optionsContainer" unique_id=1639284615]
+layout_mode = 2
+alignment = 1
+item_count = 4
+popup/item_0/text = "Auto"
+popup/item_0/id = 3
+popup/item_1/text = "Playstation"
+popup/item_1/id = 0
+popup/item_2/text = "Xbox"
+popup/item_2/id = 1
+popup/item_3/text = "Nintendo"
+popup/item_3/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options Menu/optionsContainer" unique_id=705903463]
+layout_mode = 2
+alignment = 1
+
+[node name="Voltar" type="Button" parent="Options Menu/optionsContainer/HBoxContainer" unique_id=111369277]
+layout_mode = 2
+theme = ExtResource("3_n0hwq")
+text = "text_backCancel"
+
+[node name="Button" type="Button" parent="Options Menu/optionsContainer/HBoxContainer" unique_id=93261613]
+layout_mode = 2
+text = "text_saveConf"
+
+[connection signal="button_up" from="MenuContainer/Continuar" to="." method="_on_continuar_button_up"]
+[connection signal="button_up" from="MenuContainer/Jogar" to="." method="_on_jogar_button_up"]
+[connection signal="button_up" from="MenuContainer/Options" to="." method="_on_options_button_up"]
+[connection signal="button_up" from="MenuContainer/Sair" to="." method="_on_sair_button_up"]
+[connection signal="item_selected" from="Options Menu/optionsContainer/MenuButton" to="." method="_on_menu_button_item_selected"]
+[connection signal="button_up" from="Options Menu/optionsContainer/HBoxContainer/Voltar" to="." method="_on_voltar_button_up"]

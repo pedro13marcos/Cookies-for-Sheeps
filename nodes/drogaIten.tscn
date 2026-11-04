@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxxr3fd3qh2mi"]
+
+[ext_resource type="Script" uid="uid://8kb6g1oh423b" path="res://scripts/Iten.gd" id="1_0w0pt"]
+[ext_resource type="Texture2D" uid="uid://drn8d23xoj4ol" path="res://sprites/Itens/6e46bf64-638d-4d3c-a07c-0638d826a5a5.png" id="2_8cqv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d75km"]
+size = Vector2(92, 108)
+
+[node name="drogaIten" type="Area2D" groups=["droga"]]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_0w0pt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -17)
+texture = ExtResource("2_8cqv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -15)
+shape = SubResource("RectangleShape2D_d75km")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

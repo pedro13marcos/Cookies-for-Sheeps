@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bneehkkyjo32"]
+
+[ext_resource type="Script" uid="uid://cp6kc5w3ulw1f" path="res://scripts/shakira_morreu.gd" id="1_w7ix5"]
+[ext_resource type="Texture2D" uid="uid://dvwo4dyl55aio" path="res://sprites/charcters/acea56c4-00aa-4ba5-a271-4c3626080f8e.png" id="2_dmhmm"]
+[ext_resource type="Theme" uid="uid://qhk4mgenlv66" path="res://fonts/theme.tres" id="3_04gwv"]
+[ext_resource type="Texture2D" uid="uid://b0bjave5lb4tw" path="res://sprites/charcters/647f787c-f3b5-4014-9cce-87bbbc4f5e28.png" id="3_hflkg"]
+
+[node name="shakiraGanhou" type="CanvasLayer" unique_id=81616725]
+script = ExtResource("1_w7ix5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1109456839]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.57254905)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=732673113]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -81.0
+offset_right = 162.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=859968954]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=214260333]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_dmhmm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=433094412]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_hflkg")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1597961323]
+layout_mode = 2
+theme = ExtResource("3_04gwv")
+text = "text_winning"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Menu" type="Button" parent="VBoxContainer" unique_id=948433274]
+layout_mode = 2
+text = "text_menu"
+
+[node name="Sair" type="Button" parent="VBoxContainer" unique_id=643039163]
+layout_mode = 2
+text = "text_quit"
+
+[connection signal="button_up" from="VBoxContainer/Menu" to="." method="_on_menu_button_up"]
+[connection signal="button_up" from="VBoxContainer/Sair" to="." method="_on_sair_button_up"]

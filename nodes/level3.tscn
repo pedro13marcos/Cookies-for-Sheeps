@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bj4gbmus36efv"]
+
+[ext_resource type="Script" uid="uid://dfbtr2kvmdlxl" path="res://scripts/level3.gd" id="1_jg0br"]
+[ext_resource type="Texture2D" uid="uid://beb3ouhlls3n3" path="res://sprites/a1c89f27-d421-4c5f-a240-96fc891b13ea.png" id="2_jg0br"]
+[ext_resource type="PackedScene" uid="uid://b5ym3bfkocjip" path="res://nodes/hud.tscn" id="3_r0muv"]
+[ext_resource type="PackedScene" uid="uid://ctv3cnw362ab1" path="res://nodes/porta.tscn" id="4_qgnym"]
+[ext_resource type="PackedScene" uid="uid://b4xd0k6attdcw" path="res://nodes/playerShak.tscn" id="5_c0mfv"]
+[ext_resource type="PackedScene" uid="uid://bi7wutr5u20nm" path="res://nodes/iniJoao.tscn" id="6_y3w4f"]
+[ext_resource type="AudioStream" uid="uid://ur3gga5sbnil" path="res://sound/backgroundMusic.mp3" id="7_7oeiq"]
+
+[node name="level3" type="Node2D" unique_id=709357779]
+script = ExtResource("1_jg0br")
+
+[node name="background" type="TextureRect" parent="." unique_id=3817444]
+modulate = Color(0.26657522, 0.2665752, 0.2665752, 1)
+offset_right = 1366.0
+offset_bottom = 768.0
+texture = ExtResource("2_jg0br")
+
+[node name="HUD" parent="." unique_id=298593977 instance=ExtResource("3_r0muv")]
+
+[node name="porta" parent="." unique_id=1074780583 instance=ExtResource("4_qgnym")]
+position = Vector2(991, 300)
+scale = Vector2(2, 2)
+
+[node name="playerShak" parent="." unique_id=2053806121 instance=ExtResource("5_c0mfv")]
+position = Vector2(449, 702)
+scale = Vector2(2, 2)
+
+[node name="iniJoao" parent="." unique_id=1662621932 instance=ExtResource("6_y3w4f")]
+position = Vector2(994, 334)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1838495566]
+stream = ExtResource("7_7oeiq")
+volume_db = -17.7
+autoplay = true
+parameters/looping = true

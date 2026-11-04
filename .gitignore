@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+text/translation (1).gsheet
+text/translation (2).gsheet
+Twine-2.12.0-Windows.exe
+text/translation.gsheet

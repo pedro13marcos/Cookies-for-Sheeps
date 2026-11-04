@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://qhk4mgenlv66"]
+
+[ext_resource type="FontFile" uid="uid://hocm6is4uqw0" path="res://fonts/Winter Tosca.ttf" id="1_513cy"]
+
+[resource]
+default_font = ExtResource("1_513cy")
+Button/font_sizes/font_size = 50
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("1_513cy")

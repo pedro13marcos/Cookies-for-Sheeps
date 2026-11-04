@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d1l43u8f2fxic"]
+
+[ext_resource type="Script" uid="uid://c6v66527i7j4n" path="res://scripts/dublinia.gd" id="1_f6ol2"]
+[ext_resource type="Texture2D" uid="uid://bleb5ipj05tgy" path="res://sprites/charcters/7897b965-1e91-4cf9-91b6-654d159abba3.png" id="2_f6ol2"]
+[ext_resource type="Texture2D" uid="uid://b0bjave5lb4tw" path="res://sprites/charcters/647f787c-f3b5-4014-9cce-87bbbc4f5e28.png" id="3_4xasr"]
+[ext_resource type="AudioStream" uid="uid://dihhhldjaxbeq" path="res://sound/dub/To com medo.mp3" id="4_jl0br"]
+[ext_resource type="AudioStream" uid="uid://r6owrku2c3pj" path="res://sound/dub/bate nele.mp3" id="5_dof0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n1tq"]
+size = Vector2(56, 45)
+
+[node name="porta" type="Area2D" unique_id=252333081]
+texture_filter = 1
+script = ExtResource("1_f6ol2")
+
+[node name="fechada" type="Sprite2D" parent="." unique_id=745953635]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_f6ol2")
+
+[node name="aberta" type="Sprite2D" parent="." unique_id=2047234176]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_4xasr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294430832]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_2n1tq")
+
+[node name="socorro" type="AudioStreamPlayer" parent="." unique_id=883607302]
+stream = ExtResource("4_jl0br")
+
+[node name="pedidoSocorro" type="Timer" parent="." unique_id=1165333803]
+wait_time = 8.0
+autostart = true
+
+[node name="bate nele" type="AudioStreamPlayer" parent="." unique_id=1960624]
+stream = ExtResource("5_dof0q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="pedidoSocorro" to="." method="_on_pedido_socorro_timeout"]

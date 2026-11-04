@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bi7wutr5u20nm"]
+
+[ext_resource type="Script" uid="uid://cgux4yeq3j8d" path="res://scripts/iniJoao.gd" id="1_ogtm2"]
+[ext_resource type="Texture2D" uid="uid://cusbw1brmb37o" path="res://sprites/charcters/f457de42-114f-4858-a31b-8cbebeeadd24.png" id="1_rh4be"]
+[ext_resource type="AudioStream" uid="uid://sdj4yohhbltt" path="res://sound/joao/Roi.mp3" id="3_w7tmg"]
+[ext_resource type="AudioStream" uid="uid://gj8ndgnxqj8h" path="res://sound/joao/Uo.mp3" id="4_t62op"]
+[ext_resource type="AudioStream" uid="uid://dintpnrj3wgbh" path="res://sound/joao/Xingu lingu.mp3" id="5_igumh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogtm2"]
+size = Vector2(70, 106)
+
+[node name="iniJoao" type="Area2D" unique_id=1019294997]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_ogtm2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1058181]
+scale = Vector2(0.029020555, 0.0290206)
+texture = ExtResource("1_rh4be")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=253831370]
+shape = SubResource("RectangleShape2D_ogtm2")
+
+[node name="dropItem" type="Timer" parent="." unique_id=346896963]
+wait_time = 3.0
+autostart = true
+
+[node name="dropItem2" type="AudioStreamPlayer" parent="." unique_id=45234466]
+stream = ExtResource("3_w7tmg")
+
+[node name="takehit" type="AudioStreamPlayer" parent="." unique_id=2068453916]
+stream = ExtResource("4_t62op")
+
+[node name="morto" type="AudioStreamPlayer" parent="." unique_id=1995116667]
+stream = ExtResource("5_igumh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="dropItem" to="." method="_on_drop_item_timeout"]

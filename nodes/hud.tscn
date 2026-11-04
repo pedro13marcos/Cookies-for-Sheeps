@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://b5ym3bfkocjip"]
+
+[ext_resource type="Texture2D" uid="uid://bicbd0an2xsbf" path="res://sprites/HUD/6dd2e56f-6779-4880-b0aa-6369a14fa067.png" id="1_nnmls"]
+[ext_resource type="Script" uid="uid://b4f3u14x8vyh7" path="res://scripts/hud.gd" id="1_nwhxe"]
+[ext_resource type="Texture2D" uid="uid://j2mbh7s4qeqj" path="res://sprites/HUD/3a418db5-707d-40af-9c74-88c7eba5ce96.png" id="2_nwhxe"]
+[ext_resource type="FontFile" uid="uid://hocm6is4uqw0" path="res://fonts/Winter Tosca.ttf" id="3_1odhw"]
+[ext_resource type="Texture2D" uid="uid://be05js408rfbi" path="res://sprites/HUD/25ee4e0b-c76a-4506-8a08-0e90b5b211a3.png" id="4_kmnqw"]
+[ext_resource type="Theme" uid="uid://qhk4mgenlv66" path="res://fonts/theme.tres" id="5_yaef2"]
+[ext_resource type="Texture2D" uid="uid://bbs81xoqjn0yl" path="res://sprites/HUD/a78b0259-fcfb-4ee2-a417-0d878b954b1b.png" id="6_kmnqw"]
+[ext_resource type="Texture2D" uid="uid://cusbw1brmb37o" path="res://sprites/charcters/f457de42-114f-4858-a31b-8cbebeeadd24.png" id="7_f5io7"]
+[ext_resource type="Texture2D" uid="uid://c20a3h7r15d14" path="res://sprites/HUD/pngtree-red-cross-paint-clipart-transparent-background-vector-png-image_7110618.png" id="8_f5io7"]
+[ext_resource type="PackedScene" uid="uid://bqnewx6epjj6f" path="res://nodes/pause_menu.tscn" id="10_amv5f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5io7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yaef2"]
+
+[sub_resource type="Theme" id="Theme_amv5f"]
+Button/fonts/font = ExtResource("3_1odhw")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("3_1odhw")
+Label/styles/focus = SubResource("StyleBoxFlat_f5io7")
+Label/styles/normal = SubResource("StyleBoxEmpty_yaef2")
+LineEdit/fonts/font = ExtResource("3_1odhw")
+TextEdit/fonts/font = ExtResource("3_1odhw")
+
+[node name="HUD" type="CanvasLayer" unique_id=14703939]
+script = ExtResource("1_nwhxe")
+
+[node name="HUD" type="Control" parent="." unique_id=1925789510]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="healthBarShak" type="TextureProgressBar" parent="HUD" unique_id=2018560325]
+texture_filter = 1
+layout_mode = 0
+offset_left = 134.99998
+offset_top = 5.9999995
+offset_right = 241.35695
+offset_bottom = 41.452324
+scale = Vector2(2.5, 2.5)
+max_value = 3.0
+value = 3.0
+texture_over = ExtResource("1_nnmls")
+texture_progress = ExtResource("2_nwhxe")
+
+[node name="healthBarJoao" type="TextureProgressBar" parent="HUD" unique_id=1617946981]
+texture_filter = 1
+layout_mode = 0
+offset_left = 942.0
+offset_top = 649.0
+offset_right = 1048.3569
+offset_bottom = 684.45233
+scale = Vector2(2.5, 2.5)
+max_value = 3.0
+value = 1.0
+texture_over = ExtResource("1_nnmls")
+texture_progress = ExtResource("2_nwhxe")
+
+[node name="lblTimer" type="Label" parent="HUD" unique_id=62684150]
+visible = false
+layout_mode = 0
+offset_right = 1360.0
+offset_bottom = 111.0
+theme = SubResource("Theme_amv5f")
+theme_override_font_sizes/font_size = 86
+text = "Timer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblPao" type="Label" parent="HUD" unique_id=1554184408]
+layout_mode = 0
+offset_left = 958.0
+offset_top = -3.0
+offset_right = 1122.0
+offset_bottom = 122.0
+theme = ExtResource("5_yaef2")
+theme_override_font_sizes/font_size = 97
+text = "Pao"
+
+[node name="paoIcon" type="TextureRect" parent="HUD" unique_id=81667686]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1146.0
+offset_top = -92.0
+offset_right = 1368.0
+offset_bottom = 130.0
+texture = ExtResource("4_kmnqw")
+
+[node name="Shak" type="TextureRect" parent="HUD" unique_id=9912331]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -17.0
+offset_right = 255.0
+offset_bottom = 182.0
+texture = ExtResource("6_kmnqw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Joao" type="TextureRect" parent="HUD" unique_id=366225554]
+layout_mode = 0
+offset_left = 1198.0
+offset_top = 587.0
+offset_right = 1522.0
+offset_bottom = 866.0
+texture = ExtResource("7_f5io7")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="x" type="TextureRect" parent="HUD" unique_id=36401485]
+layout_mode = 0
+offset_left = 1171.0
+offset_top = 576.0
+offset_right = 1383.0
+offset_bottom = 792.0
+texture = ExtResource("8_f5io7")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="pauseMenu" parent="." unique_id=1840960083 instance=ExtResource("10_amv5f")]

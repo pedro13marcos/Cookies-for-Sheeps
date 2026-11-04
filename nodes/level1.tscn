@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://c7a7ogcatfo75"]
+
+[ext_resource type="Script" uid="uid://doelkc60wcud7" path="res://scripts/level1.gd" id="1_5xiak"]
+[ext_resource type="PackedScene" uid="uid://b5ym3bfkocjip" path="res://nodes/hud.tscn" id="2_5xiak"]
+[ext_resource type="Texture2D" uid="uid://yi6ioxnb5f1v" path="res://sprites/1e5ff065-95e5-4aa6-b3c8-a9955625b5a1.png" id="2_bhdbp"]
+[ext_resource type="PackedScene" uid="uid://ctv3cnw362ab1" path="res://nodes/porta.tscn" id="3_bhdbp"]
+[ext_resource type="PackedScene" uid="uid://b4xd0k6attdcw" path="res://nodes/playerShak.tscn" id="4_xl5hx"]
+[ext_resource type="PackedScene" uid="uid://bi7wutr5u20nm" path="res://nodes/iniJoao.tscn" id="5_hqnr5"]
+[ext_resource type="AudioStream" uid="uid://ur3gga5sbnil" path="res://sound/backgroundMusic.mp3" id="6_vati8"]
+[ext_resource type="Texture2D" uid="uid://bm1k72lgkdgwo" path="res://sprites/Itens/Paper instructions.png" id="8_bhdbp"]
+
+[sub_resource type="SystemFont" id="SystemFont_xl5hx"]
+
+[node name="level1" type="Node2D" unique_id=748990095]
+process_mode = 3
+script = ExtResource("1_5xiak")
+
+[node name="background" type="TextureRect" parent="." unique_id=1276063284]
+modulate = Color(0.26657522, 0.2665752, 0.2665752, 1)
+offset_right = 1366.0
+offset_bottom = 768.0
+texture = ExtResource("2_bhdbp")
+
+[node name="HUD" parent="." unique_id=1921457339 instance=ExtResource("2_5xiak")]
+
+[node name="porta" parent="." unique_id=905678258 instance=ExtResource("3_bhdbp")]
+position = Vector2(1252, 312)
+scale = Vector2(2, 2)
+
+[node name="playerShak" parent="." unique_id=1056855792 instance=ExtResource("4_xl5hx")]
+process_mode = 1
+position = Vector2(127, 271)
+scale = Vector2(2, 2)
+
+[node name="iniJoao" parent="." unique_id=645117344 instance=ExtResource("5_hqnr5")]
+process_mode = 1
+position = Vector2(1239, 394)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1002214914]
+process_mode = 1
+stream = ExtResource("6_vati8")
+volume_db = -17.7
+autoplay = true
+parameters/looping = true
+
+[node name="Tutorial" type="CanvasLayer" parent="." unique_id=434541579]
+process_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial" unique_id=1171988843]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.33334
+offset_top = -319.0
+offset_right = 425.33337
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_bhdbp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial/TextureRect" unique_id=1453714581]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/TextureRect/VBoxContainer" unique_id=446739056]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Tutorial/TextureRect/VBoxContainer" unique_id=264233976]
+layout_mode = 2
+text = "title_tutorial"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Tutorial/TextureRect/VBoxContainer" unique_id=442757039]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial/TextureRect/VBoxContainer" unique_id=1576465271]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Tutorial/TextureRect/VBoxContainer/HBoxContainer" unique_id=912614144]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="1" type="Label" parent="Tutorial/TextureRect/VBoxContainer/HBoxContainer" unique_id=1311971953]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_xl5hx")
+theme_override_font_sizes/font_size = 30
+text = "1_tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="2" type="Label" parent="Tutorial/TextureRect/VBoxContainer/HBoxContainer" unique_id=1182723792]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_xl5hx")
+theme_override_font_sizes/font_size = 30
+text = "2_tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MarginContainer4" type="MarginContainer" parent="Tutorial/TextureRect/VBoxContainer/HBoxContainer" unique_id=2019417968]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Tutorial/TextureRect/VBoxContainer" unique_id=319956464]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="proximo" type="Label" parent="Tutorial/TextureRect/VBoxContainer" unique_id=672711932]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_xl5hx")
+theme_override_font_sizes/font_size = 30
+text = "tutorial_next"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="keyCoolDown" type="Timer" parent="Tutorial" unique_id=1335198577]
+
+[connection signal="timeout" from="Tutorial/keyCoolDown" to="." method="_on_key_cool_down_timeout"]

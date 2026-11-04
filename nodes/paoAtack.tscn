@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctu2w116reinb"]
+
+[ext_resource type="Script" uid="uid://c7sp3lkwiyyt8" path="res://scripts/paoAtack.gd" id="1_iqp57"]
+[ext_resource type="Texture2D" uid="uid://c3tdvo5b2fvr5" path="res://sprites/Itens/25ee4e0b-c76a-4506-8a08-0e90b5b211a3.png" id="1_nvnom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqp57"]
+size = Vector2(54, 26)
+
+[node name="PaoAtack" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_iqp57")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -17)
+texture = ExtResource("1_nvnom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_iqp57")
+
+[node name="killAtack" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="killAtack" to="." method="_on_kill_atack_timeout"]

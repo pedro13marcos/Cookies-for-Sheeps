@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dn5sw1r0rfqo0"]
+
+[ext_resource type="PackedScene" uid="uid://b4xd0k6attdcw" path="res://nodes/playerShak.tscn" id="1_xpfdc"]
+[ext_resource type="Script" uid="uid://87mg8us56146" path="res://scripts/main.gd" id="1_y2wr3"]
+[ext_resource type="PackedScene" uid="uid://bi7wutr5u20nm" path="res://nodes/iniJoao.tscn" id="2_a3ry3"]
+[ext_resource type="PackedScene" uid="uid://ctv3cnw362ab1" path="res://nodes/porta.tscn" id="2_k8dvw"]
+[ext_resource type="PackedScene" uid="uid://b5ym3bfkocjip" path="res://nodes/hud.tscn" id="3_ufc4x"]
+[ext_resource type="AudioStream" uid="uid://ur3gga5sbnil" path="res://sound/backgroundMusic.mp3" id="6_sybi7"]
+
+[node name="Main" type="Node2D" unique_id=1149260816]
+script = ExtResource("1_y2wr3")
+
+[node name="HUD" parent="." unique_id=543897555 instance=ExtResource("3_ufc4x")]
+
+[node name="porta" parent="." unique_id=533164453 instance=ExtResource("2_k8dvw")]
+position = Vector2(60, 659)
+scale = Vector2(2, 2)
+
+[node name="playerShak" parent="." unique_id=920715239 instance=ExtResource("1_xpfdc")]
+position = Vector2(1173, 132)
+scale = Vector2(2, 2)
+
+[node name="iniJoao" parent="." unique_id=671594895 instance=ExtResource("2_a3ry3")]
+position = Vector2(103, 666)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=2121998231]
+stream = ExtResource("6_sybi7")
+volume_db = -17.7
+autoplay = true
+parameters/looping = true

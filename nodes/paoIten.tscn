@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c8xjrqg1e7lih"]
+
+[ext_resource type="Texture2D" uid="uid://c3tdvo5b2fvr5" path="res://sprites/Itens/25ee4e0b-c76a-4506-8a08-0e90b5b211a3.png" id="1_iph4f"]
+[ext_resource type="Script" uid="uid://8kb6g1oh423b" path="res://scripts/Iten.gd" id="1_n8xoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d75km"]
+size = Vector2(54, 26)
+
+[node name="paoIten" type="Area2D" unique_id=1997786479 groups=["pao"]]
+script = ExtResource("1_n8xoy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490101775]
+position = Vector2(4, -17)
+texture = ExtResource("1_iph4f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1111502218]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_d75km")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

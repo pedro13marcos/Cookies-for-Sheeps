@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctv3cnw362ab1"]
+
+[ext_resource type="Texture2D" uid="uid://h015qca771kc" path="res://sprites/Itens/5a5ef736-2356-4b2d-b73d-a5d3ec01e0b8.png" id="1_piyrp"]
+[ext_resource type="Script" uid="uid://yf150ggqqop8" path="res://scripts/porta.gd" id="1_upygs"]
+[ext_resource type="Texture2D" uid="uid://b83g7hoekvjwn" path="res://sprites/Itens/a729b85e-ca41-4798-ae7a-e7c978affc35.png" id="2_8gxci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n1tq"]
+size = Vector2(46, 64)
+
+[node name="porta" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_upygs")
+
+[node name="fechada" type="Sprite2D" parent="."]
+texture = ExtResource("1_piyrp")
+
+[node name="aberta" type="Sprite2D" parent="."]
+texture = ExtResource("2_8gxci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_2n1tq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
