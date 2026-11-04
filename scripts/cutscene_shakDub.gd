@@ -20,6 +20,7 @@ var subtitle_label: Label
 func _ready() -> void:
 	$cutsceneMenu.layer = 10;
 	$cutsceneMenu.hide();
+	_setup_localized_audio();
 	_setup_subtitles();
 	$AnimationPlayer.play("cutscene");
 	
@@ -27,6 +28,33 @@ func _process(delta: float) -> void:
 	if Input.is_anything_pressed():
 		pularCutscene();
 	_update_subtitles();
+
+func _setup_localized_audio() -> void:
+	var loc = TranslationServer.get_locale();
+	var lang_code = "pt";
+	if loc.begins_with("en"):
+		lang_code = "en";
+	elif loc.begins_with("es"):
+		lang_code = "es";
+	
+	if lang_code == "pt":
+		return;
+		
+	var audio_map = {
+		$Recording: "res://sound/cutscene/" + lang_code + "/Recording.mp3",
+		$"Recording(2)": "res://sound/cutscene/" + lang_code + "/Recording (2).mp3",
+		$"Recording(3)": "res://sound/cutscene/" + lang_code + "/Recording (3).mp3",
+		$"Recording(4)": "res://sound/cutscene/" + lang_code + "/Recording (4).mp3",
+		$"Recording(5)": "res://sound/cutscene/" + lang_code + "/Recording (5).mp3",
+		$"Recording(6)": "res://sound/cutscene/" + lang_code + "/Recording (6).mp3",
+		$"Recording(7)": "res://sound/cutscene/" + lang_code + "/Recording (7).mp3",
+		$"Recording(8)": "res://sound/cutscene/" + lang_code + "/Recording (8).mp3",
+	};
+	
+	for player in audio_map:
+		var path = audio_map[player];
+		if ResourceLoader.exists(path):
+			player.stream = load(path);
 
 func _setup_subtitles() -> void:
 	subtitle_layer = CanvasLayer.new()
