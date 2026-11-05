@@ -9,6 +9,11 @@ var speed = 10;
 
 #funções na inicialização
 func _ready() -> void:
+	if has_node("Sprite2D"):
+		$Sprite2D.texture = Global.get_ammo_texture();
+		if Global.is_cookie_locale():
+			$Sprite2D.position = Vector2.ZERO;
+			$Sprite2D.scale = Vector2(0.22, 0.22);
 	#teste se instaciamos o player corretamente
 	if !(player is CharacterBody2D):
 		OS.alert("não pegou o player");
@@ -37,6 +42,7 @@ func _ready() -> void:
 #funções não físicas por frame
 func  _physics_process(_delta: float) -> void:
 	position = (position + (dir*speed));
+	rotation += 15.0 * _delta;
 
 #desaparece automa
 func _on_kill_atack_timeout() -> void:

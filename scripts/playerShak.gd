@@ -19,7 +19,7 @@ var vida: int:
 
 @onready var parent = get_node("..");
 @onready var novoPao = preload("res://nodes/paoAtack.tscn");
-@onready var deadSprite = preload("res://sprites/shakira/player_dead.png");
+@onready var deadSprite = preload("res://sprites/ai/player_dead.png");
 #@onready var anim = $AnimatedSprite2D
 @onready var anim = $AnimationPlayer
 @onready var hud = $"../HUD"

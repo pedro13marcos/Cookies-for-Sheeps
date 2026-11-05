@@ -77,11 +77,18 @@ texture_progress = ExtResource("2_nwhxe")
 
 [node name="healthBarJoao" type="TextureProgressBar" parent="HUD" unique_id=1617946981]
 texture_filter = 1
-layout_mode = 0
-offset_left = 942.0
-offset_top = 649.0
-offset_right = 1048.3569
-offset_bottom = 684.45233
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = -119.0
+offset_right = -317.6431
+offset_bottom = -83.54767
+grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(2.5, 2.5)
 max_value = 3.0
 value = 1.0
@@ -90,9 +97,11 @@ texture_progress = ExtResource("2_nwhxe")
 
 [node name="lblTimer" type="Label" parent="HUD" unique_id=62684150]
 visible = false
-layout_mode = 0
-offset_right = 1360.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 111.0
+grow_horizontal = 2
 theme = SubResource("Theme_amv5f")
 theme_override_font_sizes/font_size = 86
 text = "Timer"
@@ -100,22 +109,30 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="lblPao" type="Label" parent="HUD" unique_id=1554184408]
-layout_mode = 0
-offset_left = 958.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -408.0
 offset_top = -3.0
-offset_right = 1122.0
+offset_right = -244.0
 offset_bottom = 122.0
+grow_horizontal = 0
 theme = ExtResource("5_yaef2")
 theme_override_font_sizes/font_size = 97
 text = "Pao"
 
 [node name="paoIcon" type="TextureRect" parent="HUD" unique_id=81667686]
 texture_filter = 1
-layout_mode = 0
-offset_left = 1146.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
 offset_top = -92.0
-offset_right = 1368.0
+offset_right = 2.0
 offset_bottom = 130.0
+grow_horizontal = 0
 texture = ExtResource("4_kmnqw")
 
 [node name="Shak" type="TextureRect" parent="HUD" unique_id=9912331]
@@ -129,21 +146,35 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Joao" type="TextureRect" parent="HUD" unique_id=366225554]
-layout_mode = 0
-offset_left = 1198.0
-offset_top = 587.0
-offset_right = 1522.0
-offset_bottom = 866.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -181.0
+offset_right = 156.0
+offset_bottom = 98.0
+grow_horizontal = 0
+grow_vertical = 0
 texture = ExtResource("7_f5io7")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="x" type="TextureRect" parent="HUD" unique_id=36401485]
-layout_mode = 0
-offset_left = 1171.0
-offset_top = 576.0
-offset_right = 1383.0
-offset_bottom = 792.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -195.0
+offset_top = -192.0
+offset_right = 17.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 0
 texture = ExtResource("8_f5io7")
 expand_mode = 1
 stretch_mode = 4

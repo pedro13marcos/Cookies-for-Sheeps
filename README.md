@@ -1,7 +1,7 @@
 # 🍪 Cookies for Sheeps (Cookies & Ovelhas)
 
 > **Unidas contra João | United against John | Unidos contra Juan**  
-> **Status**: `pre-alpha 0.5`
+> **Status**: `pre-alpha 0.14`
 
 A 2D top-down action/adventure game built with the **Godot Engine 4**.
 

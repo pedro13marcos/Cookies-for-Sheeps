@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dybf4jyld1ie5"
+path="res://.godot/imported/To com medo.mp3-a8bf0d6a0a0bcb049c952a0a273d59c7.mp3str"
+
+[deps]
+
+source_file="res://sound/ai/es/To com medo.mp3"
+dest_files=["res://.godot/imported/To com medo.mp3-a8bf0d6a0a0bcb049c952a0a273d59c7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bgeve41e4jwfg"
+path="res://.godot/imported/bate nele.mp3-3c35845ec8376dd9ed26e874726a4152.mp3str"
+
+[deps]
+
+source_file="res://sound/ai/en/bate nele.mp3"
+dest_files=["res://.godot/imported/bate nele.mp3-3c35845ec8376dd9ed26e874726a4152.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

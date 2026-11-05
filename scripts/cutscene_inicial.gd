@@ -20,6 +20,7 @@ var subtitle_label: Label
 func _ready() -> void:
 	$cutsceneMenu.layer = 10;
 	$cutsceneMenu.hide();
+	$pao.texture = Global.get_ammo_texture();
 	_setup_localized_audio();
 	_setup_subtitles();
 	$AnimationPlayer.play("cutscene");
@@ -41,14 +42,14 @@ func _setup_localized_audio() -> void:
 		return;
 		
 	var audio_map = {
-		$Recording: "res://sound/cutscene/" + lang_code + "/Recording.mp3",
-		$"Recording(2)": "res://sound/cutscene/" + lang_code + "/Recording (2).mp3",
-		$"Recording(3)": "res://sound/cutscene/" + lang_code + "/Recording (3).mp3",
-		$"Recording(4)": "res://sound/cutscene/" + lang_code + "/Recording (4).mp3",
-		$"Recording(5)": "res://sound/cutscene/" + lang_code + "/Recording (5).mp3",
-		$"Recording(6)": "res://sound/cutscene/" + lang_code + "/Recording (6).mp3",
-		$"Recording(7)": "res://sound/cutscene/" + lang_code + "/Recording (7).mp3",
-		$"Recording(8)": "res://sound/cutscene/" + lang_code + "/Recording (8).mp3",
+		$Recording: "res://sound/ai/" + lang_code + "/Recording.mp3",
+		$"Recording(2)": "res://sound/ai/" + lang_code + "/Recording (2).mp3",
+		$"Recording(3)": "res://sound/ai/" + lang_code + "/Recording (3).mp3",
+		$"Recording(4)": "res://sound/ai/" + lang_code + "/Recording (4).mp3",
+		$"Recording(5)": "res://sound/ai/" + lang_code + "/Recording (5).mp3",
+		$"Recording(6)": "res://sound/ai/" + lang_code + "/Recording (6).mp3",
+		$"Recording(7)": "res://sound/ai/" + lang_code + "/Recording (7).mp3",
+		$"Recording(8)": "res://sound/ai/" + lang_code + "/Recording (8).mp3",
 	};
 	
 	for player in audio_map:

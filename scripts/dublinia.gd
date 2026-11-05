@@ -23,8 +23,8 @@ func _setup_localized_audio() -> void:
 	if lang_code == "pt":
 		return;
 		
-	var path_socorro = "res://sound/dub/" + lang_code + "/To com medo.mp3";
-	var path_bate = "res://sound/dub/" + lang_code + "/bate nele.mp3";
+	var path_socorro = "res://sound/ai/" + lang_code + "/To com medo.mp3";
+	var path_bate = "res://sound/ai/" + lang_code + "/bate nele.mp3";
 	if ResourceLoader.exists(path_socorro):
 		$socorro.stream = load(path_socorro);
 	if ResourceLoader.exists(path_bate):
