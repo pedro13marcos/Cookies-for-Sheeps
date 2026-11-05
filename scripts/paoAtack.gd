@@ -9,6 +9,8 @@ var speed = 10;
 
 #funções na inicialização
 func _ready() -> void:
+	if has_node("Sprite2D"):
+		$Sprite2D.texture = Global.get_ammo_texture();
 	#teste se instaciamos o player corretamente
 	if !(player is CharacterBody2D):
 		OS.alert("não pegou o player");

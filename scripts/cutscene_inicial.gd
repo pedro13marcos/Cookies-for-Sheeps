@@ -20,6 +20,7 @@ var subtitle_label: Label
 func _ready() -> void:
 	$cutsceneMenu.layer = 10;
 	$cutsceneMenu.hide();
+	$pao.texture = Global.get_ammo_texture();
 	_setup_localized_audio();
 	_setup_subtitles();
 	$AnimationPlayer.play("cutscene");

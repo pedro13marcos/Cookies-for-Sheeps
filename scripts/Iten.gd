@@ -9,6 +9,8 @@ var increment = 50;
 #instrucoes de inicio
 func _ready() -> void:
 	position = inimigo.position;
+	if self.is_in_group("pao") and has_node("Sprite2D"):
+		$Sprite2D.texture = Global.get_ammo_texture();
 	#OS.alert(name);
 
 #colisao com o player

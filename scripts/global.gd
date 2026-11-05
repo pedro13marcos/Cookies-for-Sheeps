@@ -28,7 +28,9 @@ var fullscreen: bool = false;
 const SAVE_PATH = "res://saveGame.json";
 
 # Versao do jogo
-const GAME_VERSION: String = "0.6";
+const GAME_VERSION: String = "0.7";
+const BREAD_TEXTURE: Texture2D = preload("res://sprites/Itens/25ee4e0b-c76a-4506-8a08-0e90b5b211a3.png");
+var _cookie_texture: Texture2D = null;
 
 #Vidas agora vão ser salvas aqui pra facilitar criar saves
 var vidas = 3;
@@ -88,9 +90,27 @@ func load_config():
 	layout = data.get("layout", layout);
 	resolution_index = clampi(int(data.get("resolution_index", 1)), 0, RESOLUTIONS.size() - 1);
 	fullscreen = bool(data.get("fullscreen", false));
+	TranslationServer.set_locale(language);
 	
 	#Confirma o carregamento
 	print("Config loaded!")
+
+func is_cookie_locale() -> bool:
+	var loc: String = TranslationServer.get_locale().to_lower();
+	return loc.begins_with("en") or loc.begins_with("es");
+
+func get_ammo_texture() -> Texture2D:
+	if not is_cookie_locale():
+		return BREAD_TEXTURE;
+	if _cookie_texture != null:
+		return _cookie_texture;
+	if ResourceLoader.exists("res://sprites/Itens/cookie.png"):
+		_cookie_texture = load("res://sprites/Itens/cookie.png");
+	if _cookie_texture == null:
+		var img := Image.load_from_file(ProjectSettings.globalize_path("res://sprites/Itens/cookie.png"));
+		if img != null:
+			_cookie_texture = ImageTexture.create_from_image(img);
+	return _cookie_texture if _cookie_texture != null else BREAD_TEXTURE;
 
 func apply_display_settings() -> void:
 	var win: Window = get_window();

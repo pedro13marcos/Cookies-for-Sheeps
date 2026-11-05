@@ -9,6 +9,7 @@ extends CanvasLayer
 #funções de início
 func _ready() -> void:
 	$HUD/x.hide();
+	$HUD/paoIcon.texture = Global.get_ammo_texture();
 
 #atualiza a hud
 func attHud():
