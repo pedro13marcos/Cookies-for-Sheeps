@@ -28,7 +28,7 @@ var fullscreen: bool = false;
 const SAVE_PATH = "res://saveGame.json";
 
 # Versao do jogo
-const GAME_VERSION: String = "0.8";
+const GAME_VERSION: String = "0.9";
 const BREAD_TEXTURE: Texture2D = preload("res://sprites/Itens/25ee4e0b-c76a-4506-8a08-0e90b5b211a3.png");
 var _cookie_texture: Texture2D = null;
 
@@ -104,13 +104,13 @@ func get_ammo_texture() -> Texture2D:
 		return BREAD_TEXTURE;
 	if _cookie_texture != null:
 		return _cookie_texture;
-	var abs_path: String = ProjectSettings.globalize_path("res://sprites/Itens/cookie.png");
+	var abs_path: String = ProjectSettings.globalize_path("res://sprites/Itens/ai/cookie.png");
 	if FileAccess.file_exists(abs_path):
 		var img := Image.load_from_file(abs_path);
 		if img != null:
 			_cookie_texture = ImageTexture.create_from_image(img);
-	if _cookie_texture == null and ResourceLoader.exists("res://sprites/Itens/cookie.png"):
-		_cookie_texture = load("res://sprites/Itens/cookie.png");
+	if _cookie_texture == null and ResourceLoader.exists("res://sprites/Itens/ai/cookie.png"):
+		_cookie_texture = load("res://sprites/Itens/ai/cookie.png");
 	return _cookie_texture if _cookie_texture != null else BREAD_TEXTURE;
 
 func apply_display_settings() -> void:

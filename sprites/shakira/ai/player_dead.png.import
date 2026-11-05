@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/shakira/player_dead.png"
+source_file="res://sprites/shakira/ai/player_dead.png"
 dest_files=["res://.godot/imported/player_dead.png-99f3fd804915cf94020c880f0c3cc187.ctex"]
 
 [params]
