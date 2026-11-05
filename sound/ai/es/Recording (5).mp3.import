@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://caqylo64ejw83"
-path="res://.godot/imported/Recording (5).mp3-440fd9f809121f453e6b6081e2345327.mp3str"
+path="res://.godot/imported/Recording (5).mp3-f9e548a0ad78f41968e875dc1da9ebaf.mp3str"
 
 [deps]
 
 source_file="res://sound/ai/es/Recording (5).mp3"
-dest_files=["res://.godot/imported/Recording (5).mp3-440fd9f809121f453e6b6081e2345327.mp3str"]
+dest_files=["res://.godot/imported/Recording (5).mp3-f9e548a0ad78f41968e875dc1da9ebaf.mp3str"]
 
 [params]
 

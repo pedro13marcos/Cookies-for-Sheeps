@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bgeve41e4jwfg"
-path="res://.godot/imported/bate nele.mp3-e3e7853ddbac9e9ac05552a634315d02.mp3str"
+path="res://.godot/imported/bate nele.mp3-3c35845ec8376dd9ed26e874726a4152.mp3str"
 
 [deps]
 
 source_file="res://sound/ai/en/bate nele.mp3"
-dest_files=["res://.godot/imported/bate nele.mp3-e3e7853ddbac9e9ac05552a634315d02.mp3str"]
+dest_files=["res://.godot/imported/bate nele.mp3-3c35845ec8376dd9ed26e874726a4152.mp3str"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4x8g7sm0qwvf"
-path="res://.godot/imported/player_dead.png-837a7b9a6a868a9766d2ce0edfaeda6f.ctex"
+path="res://.godot/imported/player_dead.png-d3f1df5575b2c3362a0e5b965ae934ff.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://sprites/ai/player_dead.png"
-dest_files=["res://.godot/imported/player_dead.png-837a7b9a6a868a9766d2ce0edfaeda6f.ctex"]
+dest_files=["res://.godot/imported/player_dead.png-d3f1df5575b2c3362a0e5b965ae934ff.ctex"]
 
 [params]
 
