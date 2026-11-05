@@ -11,6 +11,9 @@ func _ready() -> void:
 	position = inimigo.position;
 	if self.is_in_group("pao") and has_node("Sprite2D"):
 		$Sprite2D.texture = Global.get_ammo_texture();
+		if Global.is_cookie_locale():
+			$Sprite2D.position = Vector2.ZERO;
+			$Sprite2D.scale = Vector2(0.22, 0.22);
 	#OS.alert(name);
 
 #colisao com o player
