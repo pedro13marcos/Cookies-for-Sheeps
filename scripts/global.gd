@@ -11,6 +11,16 @@ const CONF_PATH = "res://confGame.json";
 var language = TranslationServer.get_locale();
 var layout = "Auto";
 var controlType = "KBM";
+const BASE_SIZE := Vector2(1366.0, 768.0);
+const RESOLUTIONS: Array[Vector2i] = [
+	Vector2i(1280, 720),
+	Vector2i(1366, 768),
+	Vector2i(1600, 900),
+	Vector2i(1920, 1080),
+	Vector2i(2560, 1440)
+];
+var resolution_index: int = 1;
+var fullscreen: bool = false;
 
 
 #Caminho do save - Agora salvando no res ao inves do user pra teste
@@ -18,23 +28,31 @@ var controlType = "KBM";
 const SAVE_PATH = "res://saveGame.json";
 
 # Versao do jogo
-const GAME_VERSION: String = "0.4";
+const GAME_VERSION: String = "0.5";
 
 #Vidas agora vão ser salvas aqui pra facilitar criar saves
 var vidas = 3;
 var currentLevel = "res://nodes/level1.tscn"
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS;
 	vidas = 3;
+	_register_display_translations();
 	load_config();
+	apply_display_settings();
 	_create_watermark();
+	get_tree().root.size_changed.connect(_on_viewport_size_changed);
+	get_tree().node_added.connect(_on_node_added);
+	call_deferred("_adapt_active_scene");
 
 #func de salvar config
 func save_config():
 	#cria o dicionário
 	var data = {
-		"lang":language,
-		"layout": layout
+		"lang": language,
+		"layout": layout,
+		"resolution_index": resolution_index,
+		"fullscreen": fullscreen
 	}
 	
 	#Abre o arquivo
@@ -61,14 +79,107 @@ func load_config():
 	
 	#Converte o texto de volta pra dicionário em array
 	var data = JSON.parse_string(json_string);
+	if typeof(data) != TYPE_DICTIONARY:
+		return;
 	
 	#Atualiza as variáveis do jogo com os dados carregados
 	#Boa prática usar get caso tenha algum erro ao implementar
-	language = data.get("lang");
-	layout = data.get("layout");
+	language = data.get("lang", language);
+	layout = data.get("layout", layout);
+	resolution_index = clampi(int(data.get("resolution_index", 1)), 0, RESOLUTIONS.size() - 1);
+	fullscreen = bool(data.get("fullscreen", false));
 	
 	#Confirma o carregamento
 	print("Config loaded!")
+
+func apply_display_settings() -> void:
+	var win: Window = get_window();
+	if fullscreen:
+		if win:
+			win.mode = Window.MODE_FULLSCREEN;
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN);
+	else:
+		if win:
+			win.mode = Window.MODE_WINDOWED;
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED);
+		var target_size: Vector2i = RESOLUTIONS[clampi(resolution_index, 0, RESOLUTIONS.size() - 1)];
+		if win:
+			win.size = target_size;
+		DisplayServer.window_set_size(target_size);
+		var screen_id: int = DisplayServer.window_get_current_screen();
+		var screen_pos: Vector2i = DisplayServer.screen_get_position(screen_id);
+		var screen_size: Vector2i = DisplayServer.screen_get_size(screen_id);
+		var centered_pos: Vector2i = screen_pos + (screen_size - target_size) / 2;
+		centered_pos.x = maxi(screen_pos.x, centered_pos.x);
+		centered_pos.y = maxi(screen_pos.y, centered_pos.y);
+		if win:
+			win.position = centered_pos;
+		DisplayServer.window_set_position(centered_pos);
+	call_deferred("_adapt_active_scene");
+
+func _on_node_added(node: Node) -> void:
+	if node == get_tree().current_scene:
+		node.ready.connect(_adapt_active_scene, CONNECT_ONE_SHOT);
+
+func _on_viewport_size_changed() -> void:
+	_adapt_active_scene();
+
+func _adapt_active_scene() -> void:
+	var scene: Node = get_tree().current_scene;
+	if not scene:
+		return;
+	var vp_size: Vector2 = get_viewport().get_visible_rect().size;
+	if vp_size.x <= 0 or vp_size.y <= 0:
+		return;
+	var scale_factor := Vector2(vp_size.x / BASE_SIZE.x, vp_size.y / BASE_SIZE.y);
+	if scene.has_node("background"):
+		var bg := scene.get_node("background") as TextureRect;
+		if bg:
+			bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE;
+			bg.stretch_mode = TextureRect.STRETCH_SCALE;
+			bg.position = Vector2.ZERO;
+			bg.size = vp_size;
+	if scene.has_node("porta"):
+		var porta := scene.get_node("porta") as Node2D;
+		if porta:
+			if not porta.has_meta("base_pos"):
+				porta.set_meta("base_pos", porta.position);
+			var base_pos: Vector2 = porta.get_meta("base_pos");
+			porta.position = base_pos * scale_factor;
+
+func _register_display_translations() -> void:
+	var entries := {
+		"pt": {
+			"text_resolution": "Resolução",
+			"text_screen_mode": "Modo de Tela",
+			"text_windowed": "Janela",
+			"text_fullscreen": "Tela Cheia"
+		},
+		"pt_BR": {
+			"text_resolution": "Resolução",
+			"text_screen_mode": "Modo de Tela",
+			"text_windowed": "Janela",
+			"text_fullscreen": "Tela Cheia"
+		},
+		"en": {
+			"text_resolution": "Resolution",
+			"text_screen_mode": "Screen Mode",
+			"text_windowed": "Windowed",
+			"text_fullscreen": "Fullscreen"
+		},
+		"es": {
+			"text_resolution": "Resolución",
+			"text_screen_mode": "Modo de Pantalla",
+			"text_windowed": "Ventana",
+			"text_fullscreen": "Pantalla Completa"
+		}
+	};
+	for loc in entries:
+		var tr_obj := Translation.new();
+		tr_obj.locale = loc;
+		for key in entries[loc]:
+			tr_obj.add_message(key, entries[loc][key]);
+		TranslationServer.add_translation(tr_obj);
 	
 
 #função de salvar o jogo em arquivo
@@ -124,7 +235,14 @@ func checkSave():
 	
 #Checar o tipo do controle
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey or event is InputEventMouse:
+	if event is InputEventKey:
+		controlType = "KBM";
+		if event.pressed and not event.echo:
+			if event.keycode == KEY_F11 or (event.alt_pressed and (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER)):
+				fullscreen = not fullscreen;
+				apply_display_settings();
+				save_config();
+	elif event is InputEventMouse:
 		controlType = "KBM";
 	elif event is InputEventJoypadButton:
 		#Pega o id da fabricante. Não achei tabela de conversão então tive que fazer no teste aqui

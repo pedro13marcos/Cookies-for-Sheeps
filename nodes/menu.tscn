@@ -24,36 +24,51 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_v4lp8")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 6
 
 [node name="Titulo" type="Label" parent="." unique_id=258172776]
-layout_mode = 0
-offset_left = 190.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -495.0
 offset_top = 23.0
-offset_right = 1180.0
+offset_right = 495.0
 offset_bottom = 137.0
+grow_horizontal = 2
 theme = ExtResource("3_n0hwq")
 theme_override_font_sizes/font_size = 101
 text = "title"
 horizontal_alignment = 1
 
 [node name="Subtitulo" type="Label" parent="." unique_id=1998593412]
-layout_mode = 0
-offset_left = -13.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -683.0
 offset_top = 139.0
-offset_right = 1456.0
+offset_right = 683.0
 offset_bottom = 274.0
+grow_horizontal = 2
 theme = ExtResource("3_n0hwq")
 theme_override_font_sizes/font_size = 46
 text = "text_subtitle"
 horizontal_alignment = 1
 
 [node name="MenuContainer" type="VBoxContainer" parent="." unique_id=889889958]
-layout_mode = 0
-offset_left = 414.0
-offset_top = 219.0
-offset_right = 1023.0
-offset_bottom = 678.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.5
+offset_top = -165.0
+offset_right = 304.5
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
 [node name="Continuar" type="Button" parent="MenuContainer" unique_id=1522342344]
@@ -96,9 +111,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -485.5
-offset_top = -167.5
+offset_top = -150.0
 offset_right = 485.5
-offset_bottom = 167.5
+offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -139,6 +154,42 @@ popup/item_2/id = 1
 popup/item_3/text = "Nintendo"
 popup/item_3/id = 2
 
+[node name="Resolution" type="Label" parent="Options Menu/optionsContainer" unique_id=1811223344]
+layout_mode = 2
+theme = ExtResource("3_n0hwq")
+text = "text_resolution"
+horizontal_alignment = 1
+
+[node name="MenuResolution" type="OptionButton" parent="Options Menu/optionsContainer" unique_id=1811223345]
+layout_mode = 2
+alignment = 1
+item_count = 5
+popup/item_0/text = "1280 x 720"
+popup/item_0/id = 0
+popup/item_1/text = "1366 x 768"
+popup/item_1/id = 1
+popup/item_2/text = "1600 x 900"
+popup/item_2/id = 2
+popup/item_3/text = "1920 x 1080"
+popup/item_3/id = 3
+popup/item_4/text = "2560 x 1440"
+popup/item_4/id = 4
+
+[node name="ScreenMode" type="Label" parent="Options Menu/optionsContainer" unique_id=1811223346]
+layout_mode = 2
+theme = ExtResource("3_n0hwq")
+text = "text_screen_mode"
+horizontal_alignment = 1
+
+[node name="MenuFullscreen" type="OptionButton" parent="Options Menu/optionsContainer" unique_id=1811223347]
+layout_mode = 2
+alignment = 1
+item_count = 2
+popup/item_0/text = "text_windowed"
+popup/item_0/id = 0
+popup/item_1/text = "text_fullscreen"
+popup/item_1/id = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Options Menu/optionsContainer" unique_id=705903463]
 layout_mode = 2
 alignment = 1
@@ -150,6 +201,7 @@ text = "text_backCancel"
 
 [node name="Button" type="Button" parent="Options Menu/optionsContainer/HBoxContainer" unique_id=93261613]
 layout_mode = 2
+theme = ExtResource("3_n0hwq")
 text = "text_saveConf"
 
 [connection signal="button_up" from="MenuContainer/Continuar" to="." method="_on_continuar_button_up"]
@@ -157,4 +209,7 @@ text = "text_saveConf"
 [connection signal="button_up" from="MenuContainer/Options" to="." method="_on_options_button_up"]
 [connection signal="button_up" from="MenuContainer/Sair" to="." method="_on_sair_button_up"]
 [connection signal="item_selected" from="Options Menu/optionsContainer/MenuButton" to="." method="_on_menu_button_item_selected"]
+[connection signal="item_selected" from="Options Menu/optionsContainer/MenuResolution" to="." method="_on_menu_resolution_item_selected"]
+[connection signal="item_selected" from="Options Menu/optionsContainer/MenuFullscreen" to="." method="_on_menu_fullscreen_item_selected"]
 [connection signal="button_up" from="Options Menu/optionsContainer/HBoxContainer/Voltar" to="." method="_on_voltar_button_up"]
+[connection signal="button_up" from="Options Menu/optionsContainer/HBoxContainer/Button" to="." method="_on_salvar_button_up"]
