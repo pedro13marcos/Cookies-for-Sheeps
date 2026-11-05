@@ -7,7 +7,7 @@ path="res://.godot/imported/bate nele.mp3-3de0370a7e40129a6edff600d1be6258.mp3st
 
 [deps]
 
-source_file="res://sound/dub/es/bate nele.mp3"
+source_file="res://sound/dub/ai/es/bate nele.mp3"
 dest_files=["res://.godot/imported/bate nele.mp3-3de0370a7e40129a6edff600d1be6258.mp3str"]
 
 [params]

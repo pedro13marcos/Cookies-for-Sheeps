@@ -7,7 +7,7 @@ path="res://.godot/imported/Recording (6).mp3-4e8ac32e681a952966845177d73a1a57.m
 
 [deps]
 
-source_file="res://sound/cutscene/en/Recording (6).mp3"
+source_file="res://sound/cutscene/ai/en/Recording (6).mp3"
 dest_files=["res://.godot/imported/Recording (6).mp3-4e8ac32e681a952966845177d73a1a57.mp3str"]
 
 [params]

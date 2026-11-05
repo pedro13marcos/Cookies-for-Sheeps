@@ -28,7 +28,7 @@ var fullscreen: bool = false;
 const SAVE_PATH = "res://saveGame.json";
 
 # Versao do jogo
-const GAME_VERSION: String = "0.9";
+const GAME_VERSION: String = "0.10";
 const BREAD_TEXTURE: Texture2D = preload("res://sprites/Itens/25ee4e0b-c76a-4506-8a08-0e90b5b211a3.png");
 var _cookie_texture: Texture2D = null;
 
